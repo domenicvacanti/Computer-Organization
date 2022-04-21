@@ -1,0 +1,67 @@
+﻿CLEAR
+LOAD LST_LOC
+STORE I /store the above list location at the pointer i
+
+
+INPUT_LOOP, INPUT /input is now in the AC
+SKIPCOND 400
+JUMP INPUT_LOOP_BODY
+JUMP ADD_LOOP
+
+
+INPUT_LOOP_BODY, STOREI I /placing what exists in the AC at the pointer labeled i
+LOAD I
+ADD ONE /moving the pointer forward by 1
+STORE I
+LOAD LEN
+ADD ONE /incrementing the length of the list
+STORE LEN
+JUMP INPUT_LOOP /going back to top of input_loop
+
+
+ADD_LOOP, CLEAR
+LOAD LST_LOC /hex value of location of the list
+STORE I /the current pointer into the list
+LOAD LEN
+SUBT ONE
+STORE CTR /the control variable used to exit the loop
+
+
+LOOP, LOAD CTR
+SKIPCOND 000 /checking to see if contents of the AC is negative**!
+JUMP BODY
+JUMP END
+
+
+/This is where the change needs to go, I have no idea how I would write the
+/code to walk the loop and find the min max wihtout running out of room in the
+/array, I have tried having to variables like I with a J as well, and having it
+/inc by one over I and then two nums to subt them to find the max and then repeat
+/to find the min, but I have no idea where I would even start after the things
+/I have tried failed.
+BODY, LOAD NUM2
+ADDI I			
+output
+
+
+LOAD I
+ADD ONE /moving the pointer forward by one
+STORE I
+LOAD CTR
+SUBT ONE /decreasing the control variable
+STORE CTR
+JUMP LOOP
+
+END, LOAD NUM
+OUTPUT
+HALT
+
+
+LST_LOC, HEX 02C
+I, HEX 0 /pointer labeled i
+NUM, DEC 0
+NUM2, DEC 0
+LEN, DEC 0
+CTR, DEC 1
+SUM, DEC 0
+ONE, DEC 1

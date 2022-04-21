@@ -1,0 +1,19 @@
+﻿input
+store x
+input
+store y
+loop, load num
+add x
+store num
+load y
+subt one
+store y
+skipcond 400
+jump loop
+load num
+output
+halt
+x, dec 0
+y, dec 0
+one, dec 1
+num, dec 0

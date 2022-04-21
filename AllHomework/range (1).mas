@@ -1,0 +1,67 @@
+﻿input
+store x
+input
+store y
+input
+store z
+test, load y
+subt x
+skipcond 000
+jump test1
+jump donex
+test1,jump doney
+
+doney, load y
+subt z
+skipcond 000
+jump test2
+load num
+add y
+store num
+jump finalz
+test2,load num
+add z
+store num
+jump finaly
+
+donex, load x
+subt z
+skipcond 000
+jump test3
+load num
+add x
+store num
+jump finalz
+test3, load num
+add z
+store num
+jump finalx
+
+finaly, load y
+subt num
+store y
+load y
+output
+jump end
+
+finalx, load x
+subt num
+store x
+load x
+output
+jump end
+
+finalz, load z
+subt num
+store z
+load z
+output
+jump end
+
+end, halt
+
+x, dec 0
+y, dec 0
+z, dec 0
+num, dec 0
+num1, dec 0

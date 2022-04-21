@@ -1,0 +1,21 @@
+﻿input
+store x
+input
+store y
+test, subt x
+skipcond 000
+jump test1
+load x
+output
+jump done
+test1, skipcond 800
+jump equal
+load y
+output
+jump done
+equal, load zero
+output
+done, halt
+x, dec 0
+y, dec 0
+zero, dec 0
